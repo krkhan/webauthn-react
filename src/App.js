@@ -12,6 +12,9 @@ function publicKeyCredentialToJSON(pubKeyCred) {
   if (pubKeyCred instanceof ArrayBuffer) {
     return base64url.encode(pubKeyCred);
   }
+  if (pubKeyCred instanceof Function) {
+    return "(function)";
+  }
   if (pubKeyCred instanceof Object) {
     const obj = {};
     for (const key in pubKeyCred) {
@@ -89,7 +92,9 @@ function App() {
         );
         const extensions = res.getClientExtensionResults();
         console.log(extensions);
-        setExtensionsOutput(JSON.stringify(extensions, null, 2));
+        setExtensionsOutput(
+          `getClientExtensionResults(): ${JSON.stringify(extensions, null, 2)}`
+        );
       })
       .catch((err) => {
         console.error(err);
