@@ -70,15 +70,6 @@ function App() {
           extensions: {
             credProps: true,
             uvm: true,
-            largeBlob: "preferred",
-            prf: {
-              first: Uint8Array.from(
-                window.atob(
-                  "QSBxdWljayBicm93biBmb3gganVtcHMgb3ZlciB0aGUgbGF6eSBkb2cu"
-                ),
-                (c) => c.charCodeAt(0)
-              ),
-            },
             devicePubKey: {
               attestation: "none",
             },
