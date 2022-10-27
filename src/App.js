@@ -65,6 +65,8 @@ function App() {
             },
           ],
           authenticatorSelection: {
+            requireResidentKey: true,
+            residentKey: "required",
             userVerification: "required",
           },
           extensions: {
@@ -84,7 +86,11 @@ function App() {
         const extensions = res.getClientExtensionResults();
         console.log(extensions);
         setExtensionsOutput(
-          `getClientExtensionResults(): ${JSON.stringify(extensions, null, 2)}`
+          `getClientExtensionResults(): ${JSON.stringify(
+            publicKeyCredentialToJSON(extensions),
+            null,
+            2
+          )}`
         );
       })
       .catch((err) => {
